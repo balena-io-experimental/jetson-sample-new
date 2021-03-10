@@ -23,7 +23,7 @@ ENV UDEV=1
 
 # Download and install BSP binaries for L4T 32.4.4
 RUN apt-get update && apt-get install -y wget tar lbzip2 python3 libegl1 && \
-    wget https://developer.nvidia.com/embedded/L4T/r32_Release_v4.4/r32_Release_v4.4-GMC3/T210/Tegra210_Linux_R32.4.4_aarch64.tbz2 && \       
+    wget https://developer.nvidia.com/embedded/L4T/r32_Release_v4.4/r32_Release_v4.4-GMC3/T210/Tegra210_Linux_R32.4.4_aarch64.tbz2 && \
     tar xf Tegra210_Linux_R32.4.4_aarch64.tbz2 && \
     cd Linux_for_Tegra && \
     sed -i 's/config.tbz2\"/config.tbz2\" --exclude=etc\/hosts --exclude=etc\/hostname/g' apply_binaries.sh && \
