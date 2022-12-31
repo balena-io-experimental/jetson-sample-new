@@ -16,11 +16,13 @@ If you don't have a balena account, you will be prompted to create one. Otherwis
 The cuda container has some sample programs that use CUDA for real time graphics. To run these samples, SSH into the app container using the balenaCloud terminal or CLI. Connect your Jetson device to a monitor before issuing these commands.
 
 First, start the X11 window system which will provide graphic support on the display attached to the Jetson:
-`X &`
-(Note the & causes the process to run in the background and return our prompt, although you may need to hit enter more than once to get the prompt back.)
 
-The most visually impressive demo is called “smokeParticles” and can be run by typing the following command
-:
+`X &`
+
+(Note the `&` causes the process to run in the background and return our prompt, although you may need to hit enter more than once to get the prompt back.)
+
+The most visually impressive demo is called “smokeParticles” and can be run by typing the following command:
+
 `./smokeParticles`
 
 To stop the demo you can hit CTRL + C. Below are the commands to run a few other demos, some of which just return information to the terminal without generating graphics on the display.
