@@ -10,6 +10,8 @@ You can deploy this project to your Jetson device simply by using the button bel
 
 If you don't have a balena account, you will be prompted to create one. Otherwise you can use the [balenaCLI](https://www.balena.io/docs/reference/balena-cli/) and push this project to a fleet of one or more devices.
 
+This project uses [multiple Dockerfiles](https://www.balena.io/docs/learn/develop/dockerfile/#multiple-dockerfiles) so it will build for the proper device based on the default device you select for your fleet.
+
 ## How to use
 
 ### CUDA examples
