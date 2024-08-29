@@ -1,6 +1,8 @@
 # jetson-sample-new
 Examples of creating containers for CUDA and OpenCV on Jetson devices (Nano, TX2, Xavier and Orin) running on balenaOS.
 
+**NOTE**: We are working on updating the Jetson Orin examples in this repository to Jetpack 6.
+
 ## Installation
 
 You can deploy this project to your Jetson device simply by using the button below:
