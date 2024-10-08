@@ -14,6 +14,8 @@ If you don't have a balena account, you will be prompted to create one. Otherwis
 
 This project uses [multiple Dockerfiles](https://www.balena.io/docs/learn/develop/dockerfile/#multiple-dockerfiles) so it will build for the proper device based on the default device you select for your fleet.
 
+NOTE: You can use the Dockerfile.jetson-agx-orin-devkit file for any Orin device.
+
 ## How to use
 
 ### CUDA examples
@@ -35,6 +37,14 @@ To stop the demo you can hit CTRL + C. Below are the commands to run a few other
 ./simpleTexture3D
 ./simpleGL
 ./postProcessGL
+```
+
+For Jetson Orin devices on Jetpack 6, you'll need to use the full path to the sample demos:
+```
+/cuda-samples/Samples/1_Utilities/deviceQuery/deviceQuery
+/cuda-samples/Samples/0_Introduction/simpleTexture3D/simpleTexture3D
+/cuda-samples/Samples/5_Domain_Specific/simpleGL/simpleGL
+/cuda-samples/Samples/5_Domain_Specific/postProcessGL/postProcessGL
 ```
 
 You can use the Dockerfile in our CUDA sample as a template for building your own containers that may need CUDA support. (Installing and building the cuda samples can be removed to save space and build time.)
