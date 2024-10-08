@@ -51,6 +51,9 @@ You can use the Dockerfile in our CUDA sample as a template for building your ow
 
 ### OpenCV examples
 
+(Note: If you were running the CUDA examples above you may first have to kill the X server in that session before continuing below. To do that, 
+type: `ps aux | grep "X"` then find the PID for the running X server and issue `kill <pid>` substituting the PID value for `<PID>`)
+
 OpenCV will be accelerated by the GPU so it has the same CUDA components as the cuda container, and will be built inside the Dockerfile.
 
 To see the OpenCV demos SSH into the app container using the balenaCloud terminal or CLI.
