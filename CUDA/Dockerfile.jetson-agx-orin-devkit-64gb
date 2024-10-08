@@ -31,12 +31,10 @@ RUN \
     rm -rf Linux_for_Tegra && \
     echo "/usr/lib/aarch64-linux-gnu/tegra" > /etc/ld.so.conf.d/nvidia-tegra.conf && ldconfig
 
-# Install X and xfce
+# Install X
 RUN apt-get install -y --no-install-recommends \
    xserver-xorg-input-evdev \
    xinit \
-   xfce4 \
-   xfce4-terminal \
    x11-xserver-utils \
    dbus-x11 \
    xterm
@@ -65,16 +63,19 @@ RUN \
     
 ## Optional: Build some CUDA samples:
 RUN \
-   apt-get install -y -o Dpkg::Options::="--force-confdef" nvidia-l4t-cuda nvidia-cuda build-essential cuda-nvcc-12-2 && git clone https://github.com/NVIDIA/cuda-samples.git && cd cuda-samples/Samples/1_Utilities/deviceQuery && make # && ./deviceQuery
-
-
-RUN \
-    cd /cuda-samples/Samples/5_Domain_Specific/smokeParticles && make
-
-WORKDIR /usr/src/
+   apt-get install -y -o Dpkg::Options::="--force-confdef" nvidia-l4t-cuda nvidia-cuda build-essential cuda-nvcc-12-2 \
+   && git clone https://github.com/NVIDIA/cuda-samples.git && cd cuda-samples/Samples/1_Utilities/deviceQuery && make && \
+   cd /cuda-samples/Samples/5_Domain_Specific/smokeParticles && make && \
+   cd /cuda-samples/Samples/5_Domain_Specific/simpleGL && make && \
+   cd /cuda-samples/Samples/5_Domain_Specific/postProcessGL && make && \
+   cd /cuda-samples/Samples/0_Introduction/clock && make && \
+   cd /cuda-samples/Samples/0_Introduction/simpleTexture3D && make
+    
+    
 
 # Create a shell script for launching NVIDIA DRM
-RUN printf 'modules=("nvidia_drm"); for module in "${modules[@]}"; do if lsmod | grep -q ${module} ; then echo "Found $module"; rmmod $module; fi; done; sleep infinity;' > drm-script.sh && chmod +x drm-script.sh
+RUN printf 'modules=("nvidia_drm"); for module in "${modules[@]}"; do if lsmod | grep -q ${module} ; then echo "Found $module"; rmmod $module; fi; done; sleep infinity;' > /usr/src/drm-script.sh && chmod +x /usr/src/drm-script.sh
     
+WORKDIR /cuda-samples/Samples/5_Domain_Specific/smokeParticles
 
 CMD ["/bin/bash", "/usr/src/drm-script.sh"]
