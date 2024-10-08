@@ -70,8 +70,3 @@ Finally, type one of the following lines to see the samples on the display:
 If all goes well, you will see example images on the monitor plugged into the Jetson's HDMI port. (While these examples are not particularly exciting, they are meant to confirm that OpenCV is indeed installed.)
 
 
-
-```
-startx ./example_ximgproc_fourier_descriptors_demo  
-startx ./example_ximgproc_paillou_demo corridor.jpg  
-```
